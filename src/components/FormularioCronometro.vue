@@ -1,6 +1,6 @@
 <template>
     <div>
-        <strong>{{ tempoFormatado }}</strong>
+        <strong :class="color">{{ tempoFormatado }}</strong>
     </div>
 </template>
 
@@ -13,11 +13,19 @@ export default defineComponent({
         timer: {
             type: Number,
             default: 0,
+        },
+        textColor: {
+            type: String,
+            default: '',
         }
     },
     computed: {
         tempoFormatado(): string{
             return new Date(this.timer * 1000).toISOString().slice(11, 19);
+        },
+        color(): string{
+            if(this.textColor === "black") return "has-text-black"
+            return ''
         }
     }
 })
