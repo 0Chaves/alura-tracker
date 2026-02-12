@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="display">
         <strong :class="color">{{ tempoFormatado }}</strong>
     </div>
 </template>
@@ -31,4 +31,8 @@ export default defineComponent({
 })
 </script>
 
-<style></style>
+<style scoped>
+.display{
+    color: var(--text-primary);
+}
+</style>
