@@ -4,13 +4,7 @@
       <BarraLateral @onDarkMode="toggleDarkMode"/>
     </div>
     <div class="column is-three-quarter conteudo">
-      <FormularioTarefa @onStop="salvarTarefa"/>
-      <div class="lista">
-        <TarefaBox v-if="listaVazia">
-          <span>Você não tem nada produzido hoje</span>
-        </TarefaBox>
-        <CardTarefa v-for="(tarefa, index) in tarefas" :key="index" :tarefa="tarefa"/>
-      </div>
+    <router-view></router-view>
     </div>
   </main>
 </template>
@@ -18,38 +12,23 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import BarraLateral from './components/BarraLateral.vue';
-import FormularioTarefa from './components/FormularioTarefa.vue';
-import Tarefa from './interfaces/Tarefa';
-import CardTarefa from './components/CardTarefa.vue';
-import TarefaBox from './components/TarefaBox.vue';
+
 
 export default defineComponent({
   name: 'App',
   components: {
     BarraLateral,
-    FormularioTarefa,
-    TarefaBox,
-    CardTarefa,
   },
   data(){
     return{
-      tarefas: [] as Tarefa[],
       darkMode: false
     }
   },
   methods: {
-    salvarTarefa (tarefa: Tarefa) {
-      this.tarefas.push(tarefa)
-    },
     toggleDarkMode(darkMode: boolean){
       this.darkMode = darkMode
     }
   },
-  computed: {
-    listaVazia () : boolean {
-      return this.tarefas.length === 0
-    }
-  }
 });
 </script>
 

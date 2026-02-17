@@ -1,6 +1,6 @@
 <template>
     <div class="is-flex is-align-items-center is-justify-content-space-between">
-        <FormularioCronometro :timer="timer"/>
+        <FormularioCronometro :timer="timer" text-color="black"/>
         <button class="button" @click="start" :disabled="isRunning">
             <span class="icon">
                 <i class="fas fa-play"></i>
